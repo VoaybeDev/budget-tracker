@@ -1,70 +1,338 @@
-# Getting Started with Create React App
+# 💰 BudgetCraft — Application de Gestion de Budget
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> Application de budget personnel construite avec **React**, dotée d'un design dark teal/cyan premium, de graphiques CSS natifs (Donut + Barres), d'une recherche temps réel et d'un suivi revenus/dépenses complet.
 
-## Available Scripts
+<br/>
 
-In the project directory, you can run:
+## 📸 Aperçu
 
-### `npm start`
+```
+┌──────────────────────────────────────────────────────┐
+│  💰 BudgetCraft                       8 transactions │  ← Navbar sticky
+├──────────────────────────────────────────────────────┤
+│                                                      │
+│  ┌────────────┐  ┌────────────┐  ┌────────────┐     │  ← Stats
+│  │ ⚖️ Solde   │  │ 📈 Revenus │  │ 📉 Dépenses│     │
+│  │ 3 107,00 € │  │ 3 000,00 € │  │   994,00 € │     │
+│  └────────────┘  └────────────┘  └────────────┘     │
+│                                                      │
+│  ┌─────────────────┐  ┌───────────────────────────┐ │  ← Graphiques
+│  │   ◎ Donut       │  │ 📊 Barres catégories       │ │
+│  │  75% Revenus    │  │ 🏠 Logement    750 €  ████ │ │
+│  │                 │  │ 🍔 Alimentation 85 €  ██   │ │
+│  │  ● Cyan 75%     │  │ 📚 Éducation    57 €  █    │ │
+│  │  ● Rouge 25%    │  │ 🚗 Transport    48 €  █    │ │
+│  └─────────────────┘  └───────────────────────────┘ │
+│                                                      │
+│  Nouvelle transaction                                │  ← Formulaire
+│  [ 📉 Dépense ]  [ 📈 Revenu ]                      │
+│  ┌─────────────┐  ┌──────────┐                      │
+│  │ Libellé     │  │ Montant  │                      │
+│  └─────────────┘  └──────────┘                      │
+│  ┌─────────────┐  ┌──────────┐                      │
+│  │ Catégorie ▾ │  │ Date     │                      │
+│  └─────────────┘  └──────────┘                      │
+│  [ ＋ Ajouter dépense ]                              │
+│                                                      │
+│  🔍 Rechercher…    [ Tout ][ 📈 Revenus ][ 📉 Dép ] │  ← Filtres
+│                                                      │
+│  ┌────────────────────────────────────────────────┐ │
+│  │ 💼  Salaire mars       Salaire · 1 mars  +2 400│ │  ← Transactions
+│  │ 🏠  Loyer              Logement · 2 mars  − 750│ │
+│  │ 🍔  Courses semaine    Aliment. · 5 mars  −  85│ │
+│  └────────────────────────────────────────────────┘ │
+│                                                      │
+│          ⌨️ Crafted by VoaybeDev →                  │  ← Signature
+└──────────────────────────────────────────────────────┘
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<br/>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🚀 Démarrage rapide
 
-### `npm test`
+### Prérequis
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [Node.js](https://nodejs.org/) ≥ 18.x
+- npm ≥ 9.x (ou pnpm / yarn)
 
-### `npm run build`
+### Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+# 1. Créer le projet React
+npx create-react-app budget-tracker
+cd budget-tracker
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# 2. Copier les fichiers
+cp BudgetApp.jsx  src/BudgetApp.jsx
+cp index.css      src/index.css
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# 3. Modifier src/App.jsx
+```
 
-### `npm run eject`
+**`src/App.jsx`**
+```jsx
+import BudgetApp from './BudgetApp';
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+export default function App() {
+  return <BudgetApp />;
+}
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+# 4. Lancer l'application
+npm start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+L'application s'ouvre sur **http://localhost:3000**
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<br/>
 
-## Learn More
+## 🗂️ Structure des fichiers
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+budget-tracker/
+├── public/
+│   └── index.html
+├── src/
+│   ├── App.jsx           ← Point d'entrée React
+│   ├── BudgetApp.jsx     ← Composant principal + logique + sous-composants
+│   └── index.css         ← Tous les styles (design tokens + composants)
+├── package.json
+└── README.md
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<br/>
 
-### Code Splitting
+## ✨ Fonctionnalités
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+| Fonctionnalité | Description |
+|---|---|
+| **Ajout transaction** | Formulaire : libellé, montant, catégorie, date |
+| **Type toggle** | Basculer entre Revenu et Dépense d'un clic |
+| **Suppression** | Bouton ✕ sur chaque transaction |
+| **Solde en temps réel** | Calculé automatiquement (revenus − dépenses) |
+| **Carte solde adaptatif** | Verte si positif, rouge si négatif |
+| **Graphique Donut** | Ratio revenus/dépenses en CSS pur (`conic-gradient`) |
+| **Graphique Barres** | Top 5 catégories de dépenses en CSS pur |
+| **Recherche** | Filtre temps réel sur libellé et catégorie |
+| **Filtre type** | Onglets : Tout / Revenus / Dépenses |
+| **Tri automatique** | Transactions triées par date décroissante |
+| **Signature** | Lien cliquable VoaybeDev → GitHub |
+| **100% Responsive** | Mobile, tablette, desktop |
 
-### Analyzing the Bundle Size
+<br/>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 🧩 Architecture du composant
 
-### Making a Progressive Web App
+```
+<BudgetApp>
+ ├── State
+ │    ├── transactions[]    → Liste complète des transactions
+ │    ├── txType            → "income" | "expense" (type du formulaire)
+ │    ├── form{}            → { label, amount, category, date }
+ │    ├── search            → Texte de recherche
+ │    └── filterType        → "all" | "income" | "expense"
+ │
+ ├── Calculs (useMemo)
+ │    ├── totalIncome       → Somme des revenus
+ │    ├── totalExpense      → Somme des dépenses
+ │    ├── balance           → totalIncome − totalExpense
+ │    └── filtered          → Transactions filtrées (search + type)
+ │
+ ├── Handlers
+ │    ├── handleChange()    → Met à jour un champ du formulaire
+ │    ├── handleTypeChange()→ Change le type + adapte les catégories
+ │    ├── handleSubmit()    → Valide et ajoute la transaction
+ │    └── handleDelete()    → Supprime une transaction par ID
+ │
+ └── Sous-composants
+      ├── <StatCard />      → Carte de statistique (solde, revenus, dépenses)
+      ├── <DonutChart />    → Graphique donut CSS (conic-gradient)
+      └── <BarChart />      → Graphique barres CSS horizontal (top 5 dépenses)
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<br/>
 
-### Advanced Configuration
+## 🎨 Design System
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Palette (CSS Custom Properties)
 
-### Deployment
+| Variable | Valeur | Usage |
+|---|---|---|
+| `--grad-bg` | `#020c18 → #071e33 → #0a2744` | Fond sombre de l'app |
+| `--grad-text` | `#00d2ff → #48cae4 → #90e0ef` | Titres en gradient cyan |
+| `--grad-income` | `#00d2ff → #00b4d8` | Revenus (cyan) |
+| `--grad-expense` | `#ff6b6b → #ee5a24` | Dépenses (corail) |
+| `--grad-balance` | `#f9c74f → #f4a261` | Solde positif (ambre) |
+| `--grad-balance-neg` | `#ff6b6b → #c9184a` | Solde négatif (rouge) |
+| `--text` | `rgba(255,255,255,0.92)` | Texte principal |
+| `--text-muted` | `rgba(255,255,255,0.42)` | Texte secondaire |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Typographie
 
-### `npm run build` fails to minify
+| Police | Usage |
+|---|---|
+| [Syne](https://fonts.google.com/specimen/Syne) | Titres, valeurs financières, navbar |
+| [DM Sans](https://fonts.google.com/specimen/DM+Sans) | Corps de texte, labels, inputs |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Breakpoints responsive
+
+| Breakpoint | Comportement |
+|---|---|
+| `> 900px` | 3 stats, graphiques côte à côte |
+| `≤ 900px` | Stats 2 colonnes, graphiques empilés |
+| `≤ 640px` | Tout en 1 colonne, topbar vertical |
+| `≤ 480px` | Boutons pleine largeur, date masquée dans les items |
+
+<br/>
+
+## 📦 Catégories disponibles
+
+### Dépenses
+```
+Alimentation · Logement · Transport · Santé
+Loisirs · Vêtements · Éducation · Autre
+```
+
+### Revenus
+```
+Salaire · Freelance · Investissement
+Remboursement · Cadeau · Autre
+```
+
+Pour ajouter des catégories, modifier les tableaux dans `BudgetApp.jsx` :
+
+```jsx
+const EXPENSE_CATEGORIES = [
+  "Alimentation",
+  "Ma nouvelle catégorie", // ← Ajouter ici
+  // ...
+];
+
+// Ajouter aussi l'emoji dans CATEGORY_ICONS :
+const CATEGORY_ICONS = {
+  "Ma nouvelle catégorie": "🏷️",
+  // ...
+};
+```
+
+<br/>
+
+## 🛠️ Personnalisation
+
+### Changer les couleurs du thème
+
+Modifier les variables dans `index.css` → section `DESIGN TOKENS` :
+
+```css
+:root {
+  --grad-bg:      linear-gradient(135deg, #votre-fond-1, #votre-fond-2);
+  --grad-text:    linear-gradient(90deg, #titre-1, #titre-2);
+  --grad-income:  linear-gradient(135deg, #revenu-1, #revenu-2);
+  --grad-expense: linear-gradient(135deg, #dépense-1, #dépense-2);
+}
+```
+
+### Connecter une API REST
+
+Remplacer `useState(INITIAL_TRANSACTIONS)` par un `useEffect` :
+
+```jsx
+import { useState, useEffect } from "react";
+
+const [transactions, setTransactions] = useState([]);
+
+// Chargement initial
+useEffect(() => {
+  fetch("https://votre-api.com/transactions")
+    .then((res) => res.json())
+    .then(setTransactions);
+}, []);
+
+// Ajout
+const handleSubmit = async () => {
+  const res = await fetch("https://votre-api.com/transactions", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ ...form, type: txType }),
+  });
+  const newTx = await res.json();
+  setTransactions((prev) => [newTx, ...prev]);
+};
+
+// Suppression
+const handleDelete = async (id) => {
+  await fetch(`https://votre-api.com/transactions/${id}`, { method: "DELETE" });
+  setTransactions((prev) => prev.filter((t) => t.id !== id));
+};
+```
+
+### Ajouter localStorage (persistance)
+
+```jsx
+// Charger depuis localStorage au démarrage
+const [transactions, setTransactions] = useState(() => {
+  const saved = localStorage.getItem("budget-transactions");
+  return saved ? JSON.parse(saved) : INITIAL_TRANSACTIONS;
+});
+
+// Sauvegarder à chaque changement
+useEffect(() => {
+  localStorage.setItem("budget-transactions", JSON.stringify(transactions));
+}, [transactions]);
+```
+
+<br/>
+
+## 🔍 Guide des classes CSS
+
+| Classe | Description |
+|---|---|
+| `.app` | Wrapper global + blobs décoratifs |
+| `.navbar` | Barre de navigation sticky glassmorphism |
+| `.container` | Conteneur centré (max 1140px) avec `flex-direction: column` |
+| `.stats-grid` | Grille 3 colonnes des cartes de stat |
+| `.stat-card` | Card de statistique générique |
+| `.stat-card--balance` | Variante solde positif (ambre) |
+| `.stat-card--balance-neg` | Variante solde négatif (rouge) |
+| `.stat-card--income` | Variante revenus (cyan) |
+| `.stat-card--expense` | Variante dépenses (corail) |
+| `.charts-grid` | Grille 2 colonnes pour les graphiques |
+| `.chart-card` | Card partagée donut + barres |
+| `.donut` | Graphique donut (`conic-gradient` via style inline) |
+| `.donut-hole` | Centre creux du donut |
+| `.bar-track` / `.bar-fill` | Barre de progression horizontale |
+| `.form-card` | Card du formulaire d'ajout |
+| `.type-toggle` | Sélecteur Revenu / Dépense |
+| `.toggle-btn--active-income` | Bouton actif (cyan) |
+| `.toggle-btn--active-expense` | Bouton actif (rouge) |
+| `.btn--income` | Bouton ajouter revenu |
+| `.btn--expense` | Bouton ajouter dépense |
+| `.topbar` | Barre recherche + filtres |
+| `.filter-tab` | Onglet de filtre |
+| `.filter-tab--active` | Onglet sélectionné |
+| `.tx-list` | Liste des transactions |
+| `.tx-item` | Item de transaction |
+| `.tx-item--income` | Bordure cyan au hover |
+| `.tx-item--expense` | Bordure corail au hover |
+| `.tx-amount--income` | Montant en cyan |
+| `.tx-amount--expense` | Montant en corail |
+| `.tx-delete` | Bouton ✕ de suppression |
+| `.signature` | Lien signature footer |
+
+<br/>
+
+## 📄 Licence
+
+Ce projet est open source — libre de le modifier et de le distribuer.  
+Un ⭐ sur le dépôt est toujours apprécié !
+
+<br/>
+
+---
+
+<div align="center">
+
+**⌨️ Crafted with ❤️ by [VoaybeDev](https://github.com/VoaybeDev?tab=repositories)**
+
+</div>
